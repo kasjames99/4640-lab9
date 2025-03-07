@@ -29,7 +29,7 @@ source "amazon-ebs" "ubuntu" {
         most_recent = true
         owners = ["099720109477"]
         }
-        ssh_username = "ubuntu"
+        ssh_username = var.ssh_username
 }
 
 build {
@@ -45,7 +45,7 @@ build {
 
         provisioner "ansible" {
         playbook_file = "../ansible/playbook.yml"
-        user = "ubuntu"
+        user = var.ssh_username
 
         ansible_env_vars = [
         "ANSIBLE_HOST_KEY_CHECKING=False"
